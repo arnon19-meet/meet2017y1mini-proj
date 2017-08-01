@@ -91,8 +91,10 @@ def make_food():
 
     food_x=random.randit(min_x,max_x)*SQUARE_SIZE
     food_y=random.randit(min_y,max_y)*SQUARE_SIZE
-    
-
+    food.goto(food_x,food_y)
+    food_pos_append(food.pos())
+    ran_food_stamp=food.stamp()
+    food_stamps.append(ran_food_stamp)
 def move_snake():
     my_pos=snake.pos()
     x_pos=my_pos[0]
