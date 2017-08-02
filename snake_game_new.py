@@ -108,7 +108,8 @@ def move_snake():
     y_pos=my_pos[1]
     global direction
      
-    if snake.pos() in pos_list[0,:-1]:
+    if snake.pos() in pos_list[0
+                               :-1]:
         quit()
     
     if direction==RIGHT:
@@ -123,22 +124,30 @@ def move_snake():
         print("you moved UP")
     elif direction==DOWN:
         snake.goto(x_pos,y_pos-SQUARE_SIZE)
-        print("you moved down")
+       # print("you moved down")
 
     my_pos=snake.pos()
     pos_list.append(my_pos)
     new_stamp=snake.stamp()
     stamp_list.append(new_stamp)
-
+    c=0
     if snake.pos() in food_pos:
         food_ind=food_pos.index(snake.pos())
         food.clearstamp(food_stamps[food_ind])
 
+        for i in range ():
+            c=c+1
+            print(c)
+
+        
         food_pos.pop(food_ind)
         food_stamps.pop(food_ind)
         print("you have eaten the food!")
         make_food()
-        #part 8?
+        
+
+        stamp_list.append(stamp1)
+
 
     old_stamp=stamp_list.pop(0)
     snake.clearstamp(old_stamp)
