@@ -12,7 +12,7 @@ turtle.penup()
 SQUARE_SIZE=20
 START_LENGTH=1
 
-
+score_list=[]
 pos_list=[]
 stamp_list=[]
 food_pos=[]
@@ -43,7 +43,7 @@ DOWN_ARROW="Down"
 RIGHT_ARROW="Right"
 TIME_STEP=100
 SPACEBAR='space'
-
+global score
 UP=0
 DOWN=1
 LEFT=2
@@ -52,6 +52,7 @@ RIGHT=3
 
 direction=UP
 direction=0
+score=0
 UP_EDGE=SIZE_Y/2
 DOWN_EDGE=-SIZE_Y/2
 RIGHT_EDGE=SIZE_X/2
@@ -78,6 +79,7 @@ def up():
 def down():
     global direction
     if direction !=UP:
+
         direction=DOWN
     #print("You pressed the down key!")
 
@@ -100,9 +102,9 @@ turtle.onkeypress(right,RIGHT_ARROW)
 turtle.listen()
 
 food_stamps=[]
-turtle.register_shape("trash.gif")
+turtle.register_shape("snakefood.gif")
 food=turtle.clone()
-food.shape("trash.gif")
+food.shape("snakefood.gif")
 
 def make_food():
     min_x=-int(SIZE_X/2/SQUARE_SIZE)+1
@@ -121,6 +123,8 @@ def make_food():
 
     
 def move_snake():
+    global score
+    
     my_pos=snake.pos()
     x_pos=my_pos[0]
     y_pos=my_pos[1]
@@ -154,18 +158,16 @@ def move_snake():
     if snake.pos() in food_pos:
         food_ind=food_pos.index(snake.pos())
         food.clearstamp(food_stamps[food_ind])
-
-        #for i in range ():
-         #   c=c+1
-          #  print(c)
-
+        turtle.clear()
+        score=score+1
+        score_list.append(score)
+        turtle.write('score='+str(score))
+        
         
         food_pos.pop(food_ind)
         food_stamps.pop(food_ind)
         print("you have eaten the food!")
         make_food()
-        score=0
-        score=score+1
         
 
         stamp_list.append(stamp1)
